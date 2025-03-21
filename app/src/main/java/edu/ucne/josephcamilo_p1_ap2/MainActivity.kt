@@ -11,13 +11,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.room.Room
+import dagger.hilt.android.AndroidEntryPoint
+import edu.ucne.josephcamilo_p1_ap2.data.local.database.J_Db
 import edu.ucne.josephcamilo_p1_ap2.ui.theme.JosephCamilo_P1_AP2Theme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private lateinit var j_Db: J_Db
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent {
+
+        j_Db = Room.databaseBuilder(
+            applicationContext,
+            J_Db::class.java,
+            "J.db"
+        ) .fallbackToDestructiveMigration()
+            .build()
+
+        /*setContent {
             JosephCamilo_P1_AP2Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
@@ -26,7 +40,7 @@ class MainActivity : ComponentActivity() {
                     )
                 }
             }
-        }
+        }*/
     }
 }
 
