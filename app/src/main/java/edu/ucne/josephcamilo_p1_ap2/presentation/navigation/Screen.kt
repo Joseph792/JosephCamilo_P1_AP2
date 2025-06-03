@@ -1,4 +1,4 @@
 package edu.ucne.josephcamilo_p1_ap2.presentation.navigation
 
-class Screen {
+sealed class Screen {
 }
