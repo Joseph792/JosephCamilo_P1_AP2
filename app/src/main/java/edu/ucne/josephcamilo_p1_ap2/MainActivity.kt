@@ -11,14 +11,26 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.room.Room
 import dagger.hilt.android.AndroidEntryPoint
+import edu.ucne.josephcamilo_p1_ap2.data.local.database.TareaDb
 import edu.ucne.josephcamilo_p1_ap2.ui.theme.JosephCamilo_P1_AP2Theme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private lateinit var tareaDb: TareaDb
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        tareaDb = Room.databaseBuilder(
+            applicationContext,
+            TareaDb::class.java,
+            "Tarea.db"
+        ).fallbackToDestructiveMigration()
+            .build()
+
         setContent {
             JosephCamilo_P1_AP2Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -31,7 +43,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
