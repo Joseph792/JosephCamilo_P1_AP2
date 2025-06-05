@@ -1,4 +1,4 @@
-package edu.ucne.josephcamilo_p1_ap2.data.di
+package edu.ucne.josephcamilo_p1_ap2.di
 
 import android.content.Context
 import androidx.room.Room

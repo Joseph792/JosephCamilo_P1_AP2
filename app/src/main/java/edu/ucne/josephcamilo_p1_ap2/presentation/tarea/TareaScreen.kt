@@ -116,7 +116,7 @@ fun TareaBodyScreen(
 
                     OutlinedTextField(
                         value = uiState.tiempo.toString(),
-                        onValueChange = {onEvent(TareaEvent.TiempoChange(0))},
+                        onValueChange = {onEvent(TareaEvent.TiempoChange(it.toInt()))},
                         label = { Text("Tiempo de la tarea") },
                         modifier = Modifier.fillMaxWidth(),
                         colors = OutlinedTextFieldDefaults.colors(
@@ -153,6 +153,7 @@ fun TareaBodyScreen(
                         }
                         OutlinedButton(
                             onClick = {
+
                                 onEvent(TareaEvent.Save)
                                 goBack()
                             },
@@ -174,4 +175,3 @@ fun TareaBodyScreen(
         }
     }
 }
-

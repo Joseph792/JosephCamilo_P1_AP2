@@ -39,9 +39,9 @@ class TareasViewModel @Inject constructor(
     private fun save() {
         viewModelScope.launch {
             if (_uiState.value.descripcion.isNullOrBlank() || _uiState.value.tiempo.toString().isNullOrBlank()){
-                /*_uiState.update {
+                _uiState.update {
                     it.copy(errorMessage = "Campo vacios")
-                }*/
+                }
             }
             else{
                 tareasRepository.save(_uiState.value.toEntity())
@@ -50,13 +50,13 @@ class TareasViewModel @Inject constructor(
     }
 
     private fun nuevo(){
-        /*_uiState.update {
+        _uiState.update {
             it.copy(
                 tareaId = 0,
                 descripcion = "",
                 tiempo = 0
             )
-        }*/
+        }
     }
 
     //findTarea
@@ -64,13 +64,13 @@ class TareasViewModel @Inject constructor(
         viewModelScope.launch {
             if(tareaId > 0){
                 val tarea = tareasRepository.find(tareaId)
-                /*_uiState.update {
+                _uiState.update {
                     it.copy(
                         tareaId = tarea?.tareaId,
                         descripcion = tarea?.descripcion ?: "",
                         tiempo = tarea?.tiempo ?: 0
                     )
-                }*/
+                }
             }
         }
     }
@@ -85,29 +85,29 @@ class TareasViewModel @Inject constructor(
     private fun getTarea() {
         viewModelScope.launch {
             tareasRepository.getAll().collect { tareas ->
-                /*_uiState.update {
+                _uiState.update {
                     it.copy(tareas = tareas)
-                }*/
+                }
             }
         }
     }
 
     private fun onDescripcionChange(descripcion: String) {
-        /*_uiState.update {
+        _uiState.update {
             it.copy(descripcion = descripcion)
-        }*/
+        }
     }
 
     private fun onTiempoChange(tiempo: Int) {
-        /*_uiState.update {
+        _uiState.update {
             it.copy(tiempo = tiempo)
-        }*/
+        }
     }
 
     private fun onTareaIdChange(tareaId: Int) {
-        /*_uiState.update {
+        _uiState.update {
             it.copy(tareaId = tareaId)
-        }*/
+        }
     }
 
 }

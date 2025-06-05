@@ -2,10 +2,10 @@ package edu.ucne.josephcamilo_p1_ap2.presentation.tarea
 
 import edu.ucne.josephcamilo_p1_ap2.data.local.entities.TareaEntity
 
-class TareaUiState {
-    val tareaId: Int? = null
-    val descripcion: String = ""
-    val tiempo: Int = 0
-    val errorMessage: String? = null
+data class TareaUiState(
+    val tareaId: Int? = null,
+    val descripcion: String = "",
+    val tiempo: Int = 0,
+    val errorMessage: String? = null,
     val tareas: List<TareaEntity> = emptyList()
-}
+)
